@@ -1,0 +1,106 @@
+<html>
+<head>
+<title>Add Food Truck</title>
+</head>
+
+<BODY>
+<SCRIPT language=JavaScript type=text/javascript>
+	
+	function validate_form(){
+    	var message ="";
+    		
+    		message += checkAlphabet("Truck Name :", document.addform.truck_name.value);
+    		message += checkPhone("Owner ID :", document.addform.owner_id.value);
+    		message += checkAlphabet("Location : ", document.addform.location.value);
+		message += checkLetter("Truck Name : ", document.addform.truck_name.value);
+		message += checkPhone("Truck ID :", document.addform.truck_id.value);
+    
+    	if (message == ""){
+      		return true;
+    	} else {
+      		alert(message);
+      	return false;
+    	}    
+  	}
+
+  
+
+  	function checkAlphabet(field, itemcontent){
+    	var nameregexp = /[a-zA-Z]+/;
+    	if (!itemcontent.match(nameregexp)){
+      		return field+" is required!\n";
+    	}
+    	return "";
+  	}
+	
+
+
+	function checkPhone(field, itemcontent){
+    	var phoneregexp = /[0-9]+/;
+		
+    	if ((field =="Owner ID") && (itemcontent=="")){
+      		return field+" is required!\n";
+		} else if ((itemcontent!="") && !itemcontent.match(phoneregexp)){
+      		return field+" Numbers only!\n";
+    	} else{
+    		return "";
+  		}
+	}
+
+	function checkLetter(field, itemcontent){
+    	var letterregexp = /[a-zA-Z]+/;
+		
+    	if ((field =="Truck Name") && (itemcontent=="")){
+      		return field+" is required!\n";
+		} else if ((itemcontent!="") && !itemcontent.match(letterregexp)){
+      		return field+" Letters Only!\n";
+    	} else{
+    		return "";
+  		}
+	}
+</SCRIPT>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<blockquote>
+  <center><p style="font-size:72px; font-family:Brush Script MT;">Add Truck</p><center>
+  <form name="addform" action="add.php" method=post onSubmit="return validate_form()" >
+    <table width="60%" border="0" cellpadding="3" cellspacing="12">
+
+  
+    <tr>
+      <td width="130"><strong>Truck Name :</strong> &nbsp;<span class="style1">*</span></td>
+      <td><input name="truck_name" type="text" size="30" maxlength="30" /></td>
+    </tr>
+
+    <tr>
+      <td width="130"><strong>Truck ID :</strong>&nbsp;<span class="style1">*</span></td>
+      <td><input name="truck_id" type="text" size="30" maxlength="30" /></td>
+    </tr>
+
+    <tr>
+      <td width="130"><strong>Owner ID :</strong>&nbsp;<span class="style1">*</span></td>
+      <td><input name="owner_id" type="text" size="30" maxlength="30" /></td>
+    </tr>
+
+    <tr valign="top">
+      <td width="130"><strong>Location :</strong> &nbsp;<span class="style1">*</span></td>
+      <td><textarea name="location" cols="25" rows="4"></textarea></td>
+   </tr>
+   
+    <tr>
+      <td width="130">&nbsp;</td>
+      <td><input type="reset" name="Reset" value="Reset" />
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="submit" name="Submit" value="Submit" /></td>
+    </tr>
+  </table>
+  </form>
+   </p>
+</blockquote>
+
+<a href="index.php">Back to Main Menu</a>
+
+</body>
+</html>
